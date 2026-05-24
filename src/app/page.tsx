@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import RevealWrapper from '@/components/RevealWrapper'
 import NewsletterForm from '@/components/NewsletterForm'
 import { siteConfig } from '@/lib/metadata'
@@ -109,7 +110,21 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-bg-circle c1" />
         <div className="hero-bg-circle c2" />
-        <div className="container">
+
+        {/* Background image — fills right half, blends into dark left */}
+        <div className="hero-image-bg">
+          <Image
+            src="/hero.png"
+            alt="Child engaged in hands-on learning at home"
+            fill
+            priority
+            quality={85}
+            style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          />
+        </div>
+
+        <div className="container hero-container">
+          {/* LEFT — text only, no stats */}
           <div className="hero-content animate-in">
             <div className="hero-badge">🇮🇳 India&apos;s Experiential Learning Movement</div>
             <h1>
@@ -124,25 +139,30 @@ export default function HomePage() {
               <Link href="/activities" className="btn btn-primary btn-lg">Explore Home Activities →</Link>
               <Link href="/manifesto" className="btn btn-outline-white btn-lg">Read Our Manifesto</Link>
             </div>
-            <div className="hero-stats">
-              {[
-                { num: '26.5M', label: 'CBSE students in India' },
-                { num: '<5%', label: 'learn practical skills in school' },
-                { num: '72%', label: "parents worry their child's curiosity fades through school" },
-                { num: '0', label: 'exams required to learn curiosity and creativity' },
-              ].map(({ num, label }) => (
-                <div key={label} className="stat-item">
-                  <div className="stat-num">{num}</div>
-                  <div className="stat-label">{label}</div>
-                </div>
-              ))}
-            </div>
+          </div>
+
+          {/* Spacer — keeps right column open so image shows through */}
+          <div aria-hidden="true" />
+
+          {/* STATS — spans full width below both columns */}
+          <div className="hero-stats">
+            {[
+              { num: '26.5M', label: 'CBSE students in India' },
+              { num: '<5%', label: 'learn practical skills in school' },
+              { num: '72%', label: "parents worry their child's curiosity fades through school" },
+              { num: '0', label: 'exams required to learn curiosity and creativity' },
+            ].map(({ num, label }) => (
+              <div key={label} className="stat-item">
+                <div className="stat-num">{num}</div>
+                <div className="stat-label">{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* PROBLEM STATEMENT */}
-      <section className="section bg-light">
+      <section className="section bg-mint">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge">The Problem</div>
@@ -233,7 +253,7 @@ export default function HomePage() {
       </section>
 
       {/* HOME PROGRAMS PREVIEW */}
-      <section className="section bg-light">
+      <section className="section bg-yellow">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge accent">For Parents</div>
@@ -301,7 +321,7 @@ export default function HomePage() {
       </section>
 
       {/* REAL LIFE EXAMPLES */}
-      <section className="section bg-light">
+      <section className="section bg-sky">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge">Real Moments</div>

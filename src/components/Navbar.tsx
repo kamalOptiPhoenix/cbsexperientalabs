@@ -32,8 +32,7 @@ export default function Navbar() {
       <div className="container">
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <div className="logo-icon">🧪</div>
-            CBSE<span>Xperienta</span>labs
+            CBSEXperientaLabs
           </Link>
 
           <ul className="nav-links">

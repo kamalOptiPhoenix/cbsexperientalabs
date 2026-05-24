@@ -134,7 +134,7 @@ export default function WhatsBrokenPage() {
       />
 
       {/* STATS */}
-      <section className="section-sm bg-light">
+      <section className="section-sm">
         <div className="container">
           <RevealWrapper className="broken-stats">
             {stats.map(({ num, label }) => (

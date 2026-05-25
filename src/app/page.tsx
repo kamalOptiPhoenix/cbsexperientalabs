@@ -111,8 +111,8 @@ export default function HomePage() {
         <div className="hero-bg-circle c1" />
         <div className="hero-bg-circle c2" />
 
-        {/* Background image — fills right half, blends into dark left */}
-        <div className="hero-image-bg">
+        {/* Desktop: image on right half */}
+        <div className="hero-image-bg hero-image-desktop">
           <Image
             src="/hero.png"
             alt="Child engaged in hands-on learning at home"
@@ -123,8 +123,20 @@ export default function HomePage() {
           />
         </div>
 
+        {/* Mobile: full-bleed background (blurred top → kid at bottom) */}
+        <div className="hero-image-bg hero-image-mobile">
+          <Image
+            src="/hero-mobile.png"
+            alt="Child learning at home"
+            fill
+            priority
+            quality={85}
+            style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
+          />
+        </div>
+
         <div className="container hero-container">
-          {/* LEFT — text only, no stats */}
+          {/* Left col: all content */}
           <div className="hero-content animate-in">
             <div className="hero-badge">🇮🇳 India&apos;s Experiential Learning Movement</div>
             <h1>
@@ -141,10 +153,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Spacer — keeps right column open so image shows through */}
+          {/* Right col spacer (desktop only) */}
           <div aria-hidden="true" />
 
-          {/* STATS — spans full width below both columns */}
+          {/* Stats — full width below */}
           <div className="hero-stats">
             {[
               { num: '26.5M', label: 'CBSE students in India' },
@@ -162,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* PROBLEM STATEMENT */}
-      <section className="section bg-mint">
+      <section className="section bg-sky">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge">The Problem</div>
@@ -253,7 +265,7 @@ export default function HomePage() {
       </section>
 
       {/* HOME PROGRAMS PREVIEW */}
-      <section className="section bg-yellow">
+      <section className="section bg-sky">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge accent">For Parents</div>
@@ -368,7 +380,7 @@ export default function HomePage() {
       </section>
 
       {/* WHY PARENTS HESITATE */}
-      <section className="section bg-light">
+      <section className="section bg-sky">
         <div className="container">
           <RevealWrapper className="section-header text-center">
             <div className="section-badge">We Understand Your Fear</div>

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { ABeeZee, Bubblegum_Sans } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import SiteLayout from '@/components/SiteLayout'
 import { siteConfig } from '@/lib/metadata'
 
 const bubblegum = Bubblegum_Sans({
@@ -100,9 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
   )

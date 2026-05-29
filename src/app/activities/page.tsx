@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import PageHero from '@/components/PageHero'
 import ActivityTabs from '@/components/ActivityTabs'
 import CtaSection from '@/components/CtaSection'
+import { getAllActivities } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Home Learning Activities by Age — Nursery to Class 5',
@@ -19,7 +20,10 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function ActivitiesPage() {
+export default async function ActivitiesPage() {
+  const activities = await getAllActivities()
+  const count = activities.length
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -40,7 +44,7 @@ export default function ActivitiesPage() {
       <PageHero
         badge="Home Activities"
         title="Learning That Happens at Home"
-        description="32 practical, joyful activities organised by age — from Nursery to Class 5. No special equipment. No extra budget. Just curiosity and everyday life."
+        description={`${count} practical, joyful activities organised by age — from Nursery to Class 5. No special equipment. No extra budget. Just curiosity and everyday life.`}
       />
 
       <section className="section-sm">
@@ -55,7 +59,7 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
-      <ActivityTabs />
+      <ActivityTabs activities={activities} />
 
       <CtaSection
         title="Want to Go Deeper?"
